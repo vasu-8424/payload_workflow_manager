@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Blogs = void 0;
-exports.Blogs = {
+export const Blogs = {
     slug: 'blogs',
     admin: {
         useAsTitle: 'title',
@@ -23,12 +20,6 @@ exports.Blogs = {
         {
             name: 'excerpt',
             type: 'textarea',
-            required: false,
-        },
-        {
-            name: 'featuredImage',
-            type: 'upload',
-            relationTo: 'media',
             required: false,
         },
         {

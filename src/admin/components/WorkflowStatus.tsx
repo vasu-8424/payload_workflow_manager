@@ -265,7 +265,7 @@ export const WorkflowStatus: React.FC<WorkflowStatusProps> = ({
         <p><strong>Last Updated:</strong> {new Date(workflow?.lastUpdated || '').toLocaleString()}</p>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .workflow-status {
           padding: 20px;
           border: 1px solid #e1e5e9;

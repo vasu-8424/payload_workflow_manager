@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Contracts = void 0;
-exports.Contracts = {
+export const Contracts = {
     slug: 'contracts',
     admin: {
         useAsTitle: 'title',
@@ -168,21 +165,6 @@ exports.Contracts = {
                 { label: 'Medium', value: 'medium' },
                 { label: 'High', value: 'high' },
                 { label: 'Urgent', value: 'urgent' },
-            ],
-        },
-        {
-            name: 'attachments',
-            type: 'array',
-            fields: [
-                {
-                    name: 'file',
-                    type: 'upload',
-                    relationTo: 'media',
-                },
-                {
-                    name: 'description',
-                    type: 'text',
-                },
             ],
         },
         // Workflow-related fields

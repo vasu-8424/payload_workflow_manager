@@ -1,15 +1,9 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.seedData = seedData;
-const payload_1 = __importDefault(require("payload"));
-async function seedData() {
+import payload from 'payload';
+export async function seedData() {
     console.log('🌱 Starting database seeding...');
     try {
         // Create users
-        const adminUser = await payload_1.default.create({
+        const adminUser = await payload.create({
             collection: 'users',
             data: {
                 name: 'Admin User',
@@ -18,7 +12,7 @@ async function seedData() {
                 department: 'IT',
             },
         });
-        const managerUser = await payload_1.default.create({
+        const managerUser = await payload.create({
             collection: 'users',
             data: {
                 name: 'Manager User',
@@ -27,7 +21,7 @@ async function seedData() {
                 department: 'Operations',
             },
         });
-        const reviewerUser = await payload_1.default.create({
+        const reviewerUser = await payload.create({
             collection: 'users',
             data: {
                 name: 'Reviewer User',
@@ -36,7 +30,7 @@ async function seedData() {
                 department: 'Legal',
             },
         });
-        const editorUser = await payload_1.default.create({
+        const editorUser = await payload.create({
             collection: 'users',
             data: {
                 name: 'Editor User',
@@ -47,7 +41,7 @@ async function seedData() {
         });
         console.log('✅ Users created');
         // Create blog workflow
-        const blogWorkflow = await payload_1.default.create({
+        const blogWorkflow = await payload.create({
             collection: 'workflows',
             data: {
                 name: 'Blog Publication Workflow',
@@ -104,7 +98,7 @@ async function seedData() {
             },
         });
         // Create contract workflow
-        const contractWorkflow = await payload_1.default.create({
+        const contractWorkflow = await payload.create({
             collection: 'workflows',
             data: {
                 name: 'Contract Approval Workflow',
@@ -167,7 +161,7 @@ async function seedData() {
         });
         console.log('✅ Workflows created');
         // Create sample blog post
-        const sampleBlog = await payload_1.default.create({
+        const sampleBlog = await payload.create({
             collection: 'blogs',
             data: {
                 title: 'Getting Started with Payload CMS',
@@ -197,7 +191,7 @@ async function seedData() {
             },
         });
         // Create sample contract
-        const sampleContract = await payload_1.default.create({
+        const sampleContract = await payload.create({
             collection: 'contracts',
             data: {
                 title: 'Software Development Agreement',

@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Users = void 0;
-exports.Users = {
+export const Users = {
     slug: 'users',
     auth: true,
     admin: {
@@ -53,12 +50,6 @@ exports.Users = {
         {
             name: 'department',
             type: 'text',
-            required: false,
-        },
-        {
-            name: 'avatar',
-            type: 'upload',
-            relationTo: 'media',
             required: false,
         },
     ],
