@@ -41,6 +41,6 @@ export default buildConfig({
     url: process.env.MONGODB_URI || 'mongodb://localhost:27017/workflow-cms',
   }),
   editor: slateEditor({}),
-  cors: ['http://localhost:3000', 'http://localhost:3001'],
-  csrf: ['http://localhost:3000', 'http://localhost:3001'],
+  cors: ['https://payload-workflow-manager.onrender.com'],
+  csrf: ['https://payload-workflow-manager.onrender.com'],
 }); 
