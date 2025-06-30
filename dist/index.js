@@ -1,21 +1,26 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import payload from 'payload';
-import { seedData } from './seed';
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const payload_1 = __importDefault(require("payload"));
+const seed_1 = require("./seed");
 // Load environment variables
-dotenv.config();
-const app = express();
+dotenv_1.default.config();
+const app = (0, express_1.default)();
 // Middleware
-app.use(cors());
-app.use(express.json());
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
 // Initialize Payload
 const start = async () => {
-    await payload.init({
+    await payload_1.default.init({
         secret: process.env.PAYLOAD_SECRET || 'your-secret-key',
         express: app,
         onInit: async () => {
-            payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+            payload_1.default.logger.info(`Payload Admin URL: ${payload_1.default.getAdminURL()}`);
         },
     });
     // Simple API routes for workflow management
@@ -94,7 +99,7 @@ const start = async () => {
     if (process.env.NODE_ENV === 'development') {
         app.post('/api/seed', async (req, res) => {
             try {
-                await seedData();
+                await (0, seed_1.seedData)();
                 res.json({ success: true, message: 'Database seeded successfully' });
             }
             catch (error) {

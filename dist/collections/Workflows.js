@@ -1,4 +1,7 @@
-export const Workflows = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Workflows = void 0;
+exports.Workflows = {
     slug: 'workflows',
     admin: {
         useAsTitle: 'name',

@@ -1,4 +1,7 @@
-export const Media = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Media = void 0;
+exports.Media = {
     slug: 'media',
     upload: true,
     fields: [

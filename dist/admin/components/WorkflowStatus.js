@@ -1,15 +1,18 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useState, useEffect } from 'react';
-import { useField } from 'payload/components/forms';
-import { Button } from 'payload/components/elements';
-import { toast } from 'react-toastify';
-export const WorkflowStatus = ({ path, documentId, collection }) => {
-    const [workflowStatus, setWorkflowStatus] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [actionLoading, setActionLoading] = useState(false);
-    const [comment, setComment] = useState('');
-    const { value: workflowField } = useField({ path: 'workflow' });
-    useEffect(() => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.WorkflowStatus = void 0;
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = require("react");
+const forms_1 = require("payload/components/forms");
+const elements_1 = require("payload/components/elements");
+const react_toastify_1 = require("react-toastify");
+const WorkflowStatus = ({ path, documentId, collection }) => {
+    const [workflowStatus, setWorkflowStatus] = (0, react_1.useState)(null);
+    const [loading, setLoading] = (0, react_1.useState)(false);
+    const [actionLoading, setActionLoading] = (0, react_1.useState)(false);
+    const [comment, setComment] = (0, react_1.useState)('');
+    const { value: workflowField } = (0, forms_1.useField)({ path: 'workflow' });
+    (0, react_1.useEffect)(() => {
         if (workflowField && documentId) {
             fetchWorkflowStatus();
         }
@@ -25,7 +28,7 @@ export const WorkflowStatus = ({ path, documentId, collection }) => {
         }
         catch (error) {
             console.error('Error fetching workflow status:', error);
-            toast.error('Failed to fetch workflow status');
+            react_toastify_1.toast.error('Failed to fetch workflow status');
         }
         finally {
             setLoading(false);
@@ -47,16 +50,16 @@ export const WorkflowStatus = ({ path, documentId, collection }) => {
                 }),
             });
             if (response.ok) {
-                toast.success('Workflow triggered successfully');
+                react_toastify_1.toast.success('Workflow triggered successfully');
                 await fetchWorkflowStatus();
             }
             else {
-                toast.error('Failed to trigger workflow');
+                react_toastify_1.toast.error('Failed to trigger workflow');
             }
         }
         catch (error) {
             console.error('Error triggering workflow:', error);
-            toast.error('Failed to trigger workflow');
+            react_toastify_1.toast.error('Failed to trigger workflow');
         }
         finally {
             setActionLoading(false);
@@ -81,33 +84,33 @@ export const WorkflowStatus = ({ path, documentId, collection }) => {
                 }),
             });
             if (response.ok) {
-                toast.success(`Action ${action} processed successfully`);
+                react_toastify_1.toast.success(`Action ${action} processed successfully`);
                 setComment('');
                 await fetchWorkflowStatus();
             }
             else {
-                toast.error(`Failed to process ${action}`);
+                react_toastify_1.toast.error(`Failed to process ${action}`);
             }
         }
         catch (error) {
             console.error('Error processing action:', error);
-            toast.error(`Failed to process ${action}`);
+            react_toastify_1.toast.error(`Failed to process ${action}`);
         }
         finally {
             setActionLoading(false);
         }
     };
     if (!workflowField) {
-        return (_jsxs("div", { className: "workflow-status", children: [_jsx("h3", { children: "Workflow Status" }), _jsx("p", { children: "No workflow assigned to this document." })] }));
+        return ((0, jsx_runtime_1.jsxs)("div", { className: "workflow-status", children: [(0, jsx_runtime_1.jsx)("h3", { children: "Workflow Status" }), (0, jsx_runtime_1.jsx)("p", { children: "No workflow assigned to this document." })] }));
     }
     if (loading) {
-        return (_jsxs("div", { className: "workflow-status", children: [_jsx("h3", { children: "Workflow Status" }), _jsx("p", { children: "Loading workflow status..." })] }));
+        return ((0, jsx_runtime_1.jsxs)("div", { className: "workflow-status", children: [(0, jsx_runtime_1.jsx)("h3", { children: "Workflow Status" }), (0, jsx_runtime_1.jsx)("p", { children: "Loading workflow status..." })] }));
     }
     if (!workflowStatus?.hasWorkflow) {
-        return (_jsxs("div", { className: "workflow-status", children: [_jsx("h3", { children: "Workflow Status" }), _jsx("p", { children: workflowStatus?.message || 'No active workflow found' }), _jsx(Button, { onClick: triggerWorkflow, disabled: actionLoading, className: "trigger-workflow-btn", children: actionLoading ? 'Triggering...' : 'Trigger Workflow' })] }));
+        return ((0, jsx_runtime_1.jsxs)("div", { className: "workflow-status", children: [(0, jsx_runtime_1.jsx)("h3", { children: "Workflow Status" }), (0, jsx_runtime_1.jsx)("p", { children: workflowStatus?.message || 'No active workflow found' }), (0, jsx_runtime_1.jsx)(elements_1.Button, { onClick: triggerWorkflow, disabled: actionLoading, className: "trigger-workflow-btn", children: actionLoading ? 'Triggering...' : 'Trigger Workflow' })] }));
     }
     const { workflow } = workflowStatus;
-    return (_jsxs("div", { className: "workflow-status", children: [_jsxs("div", { className: "workflow-header", children: [_jsxs("h3", { children: ["Workflow: ", workflow?.name] }), _jsxs("div", { className: "workflow-meta", children: [_jsx("span", { className: `status ${workflow?.isActive ? 'active' : 'completed'}`, children: workflow?.isActive ? 'Active' : 'Completed' }), _jsxs("span", { className: "current-step", children: ["Step ", workflow?.currentStep + 1, " of ", workflow?.stepStatus.length] })] })] }), _jsx("div", { className: "workflow-steps", children: workflow?.stepStatus.map((step, index) => (_jsxs("div", { className: `workflow-step ${step.status}`, children: [_jsxs("div", { className: "step-header", children: [_jsx("h4", { children: step.name }), _jsx("span", { className: `step-status ${step.status}`, children: step.status.replace('_', ' ').toUpperCase() })] }), _jsxs("div", { className: "step-details", children: [_jsxs("p", { children: [_jsx("strong", { children: "Type:" }), " ", step.type] }), _jsxs("p", { children: [_jsx("strong", { children: "Assignees:" }), " ", step.assignees.length] }), step.approvals.length > 0 && (_jsxs("div", { className: "step-approvals", children: [_jsx("h5", { children: "Approvals:" }), step.approvals.map((approval, approvalIndex) => (_jsxs("div", { className: "approval-item", children: [_jsx("span", { className: `approval-action ${approval.action}`, children: approval.action.toUpperCase() }), _jsxs("span", { className: "approval-user", children: ["User: ", approval.userId] }), _jsx("span", { className: "approval-time", children: new Date(approval.timestamp).toLocaleString() }), approval.comment && (_jsx("p", { className: "approval-comment", children: approval.comment }))] }, approvalIndex)))] })), step.status === 'in_progress' && (_jsxs("div", { className: "step-actions", children: [_jsx("h5", { children: "Actions:" }), _jsxs("div", { className: "action-buttons", children: [_jsx(Button, { onClick: () => processAction(index, 'approve'), disabled: actionLoading, className: "approve-btn", children: "Approve" }), _jsx(Button, { onClick: () => processAction(index, 'reject'), disabled: actionLoading, className: "reject-btn", children: "Reject" }), _jsxs("div", { className: "comment-section", children: [_jsx("textarea", { value: comment, onChange: (e) => setComment(e.target.value), placeholder: "Add a comment...", className: "comment-input" }), _jsx(Button, { onClick: () => processAction(index, 'comment'), disabled: actionLoading || !comment.trim(), className: "comment-btn", children: "Add Comment" })] })] })] }))] })] }, step.stepId))) }), _jsxs("div", { className: "workflow-footer", children: [_jsxs("p", { children: [_jsx("strong", { children: "Started:" }), " ", new Date(workflow?.startDate || '').toLocaleString()] }), _jsxs("p", { children: [_jsx("strong", { children: "Last Updated:" }), " ", new Date(workflow?.lastUpdated || '').toLocaleString()] })] }), _jsx("style", { children: `
+    return ((0, jsx_runtime_1.jsxs)("div", { className: "workflow-status", children: [(0, jsx_runtime_1.jsxs)("div", { className: "workflow-header", children: [(0, jsx_runtime_1.jsxs)("h3", { children: ["Workflow: ", workflow?.name] }), (0, jsx_runtime_1.jsxs)("div", { className: "workflow-meta", children: [(0, jsx_runtime_1.jsx)("span", { className: `status ${workflow?.isActive ? 'active' : 'completed'}`, children: workflow?.isActive ? 'Active' : 'Completed' }), (0, jsx_runtime_1.jsxs)("span", { className: "current-step", children: ["Step ", workflow?.currentStep + 1, " of ", workflow?.stepStatus.length] })] })] }), (0, jsx_runtime_1.jsx)("div", { className: "workflow-steps", children: workflow?.stepStatus.map((step, index) => ((0, jsx_runtime_1.jsxs)("div", { className: `workflow-step ${step.status}`, children: [(0, jsx_runtime_1.jsxs)("div", { className: "step-header", children: [(0, jsx_runtime_1.jsx)("h4", { children: step.name }), (0, jsx_runtime_1.jsx)("span", { className: `step-status ${step.status}`, children: step.status.replace('_', ' ').toUpperCase() })] }), (0, jsx_runtime_1.jsxs)("div", { className: "step-details", children: [(0, jsx_runtime_1.jsxs)("p", { children: [(0, jsx_runtime_1.jsx)("strong", { children: "Type:" }), " ", step.type] }), (0, jsx_runtime_1.jsxs)("p", { children: [(0, jsx_runtime_1.jsx)("strong", { children: "Assignees:" }), " ", step.assignees.length] }), step.approvals.length > 0 && ((0, jsx_runtime_1.jsxs)("div", { className: "step-approvals", children: [(0, jsx_runtime_1.jsx)("h5", { children: "Approvals:" }), step.approvals.map((approval, approvalIndex) => ((0, jsx_runtime_1.jsxs)("div", { className: "approval-item", children: [(0, jsx_runtime_1.jsx)("span", { className: `approval-action ${approval.action}`, children: approval.action.toUpperCase() }), (0, jsx_runtime_1.jsxs)("span", { className: "approval-user", children: ["User: ", approval.userId] }), (0, jsx_runtime_1.jsx)("span", { className: "approval-time", children: new Date(approval.timestamp).toLocaleString() }), approval.comment && ((0, jsx_runtime_1.jsx)("p", { className: "approval-comment", children: approval.comment }))] }, approvalIndex)))] })), step.status === 'in_progress' && ((0, jsx_runtime_1.jsxs)("div", { className: "step-actions", children: [(0, jsx_runtime_1.jsx)("h5", { children: "Actions:" }), (0, jsx_runtime_1.jsxs)("div", { className: "action-buttons", children: [(0, jsx_runtime_1.jsx)(elements_1.Button, { onClick: () => processAction(index, 'approve'), disabled: actionLoading, className: "approve-btn", children: "Approve" }), (0, jsx_runtime_1.jsx)(elements_1.Button, { onClick: () => processAction(index, 'reject'), disabled: actionLoading, className: "reject-btn", children: "Reject" }), (0, jsx_runtime_1.jsxs)("div", { className: "comment-section", children: [(0, jsx_runtime_1.jsx)("textarea", { value: comment, onChange: (e) => setComment(e.target.value), placeholder: "Add a comment...", className: "comment-input" }), (0, jsx_runtime_1.jsx)(elements_1.Button, { onClick: () => processAction(index, 'comment'), disabled: actionLoading || !comment.trim(), className: "comment-btn", children: "Add Comment" })] })] })] }))] })] }, step.stepId))) }), (0, jsx_runtime_1.jsxs)("div", { className: "workflow-footer", children: [(0, jsx_runtime_1.jsxs)("p", { children: [(0, jsx_runtime_1.jsx)("strong", { children: "Started:" }), " ", new Date(workflow?.startDate || '').toLocaleString()] }), (0, jsx_runtime_1.jsxs)("p", { children: [(0, jsx_runtime_1.jsx)("strong", { children: "Last Updated:" }), " ", new Date(workflow?.lastUpdated || '').toLocaleString()] })] }), (0, jsx_runtime_1.jsx)("style", { children: `
         .workflow-status {
           padding: 20px;
           border: 1px solid #e1e5e9;
@@ -340,4 +343,5 @@ export const WorkflowStatus = ({ path, documentId, collection }) => {
         }
       ` })] }));
 };
+exports.WorkflowStatus = WorkflowStatus;
 //# sourceMappingURL=WorkflowStatus.js.map

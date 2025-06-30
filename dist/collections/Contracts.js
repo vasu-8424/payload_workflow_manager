@@ -1,4 +1,7 @@
-export const Contracts = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Contracts = void 0;
+exports.Contracts = {
     slug: 'contracts',
     admin: {
         useAsTitle: 'title',

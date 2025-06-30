@@ -1,4 +1,7 @@
-export const Blogs = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Blogs = void 0;
+exports.Blogs = {
     slug: 'blogs',
     admin: {
         useAsTitle: 'title',
