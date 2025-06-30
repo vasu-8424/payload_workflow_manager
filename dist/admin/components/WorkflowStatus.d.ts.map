@@ -1,0 +1,1 @@
+{"version":3,"file":"WorkflowStatus.d.ts","sourceRoot":"","sources":["../../../src/admin/components/WorkflowStatus.tsx"],"names":[],"mappings":"AAAA,OAAO,KAA8B,MAAM,OAAO,CAAC;AAKnD,UAAU,mBAAmB;IAC3B,IAAI,EAAE,MAAM,CAAC;IACb,UAAU,EAAE,MAAM,CAAC;IACnB,UAAU,EAAE,MAAM,CAAC;CACpB;AA8BD,eAAO,MAAM,cAAc,EAAE,KAAK,CAAC,EAAE,CAAC,mBAAmB,CA8cxD,CAAC"}
