@@ -19,5 +19,6 @@
     "dist/index.js": {
       "maxDuration": 30
     }
-  }
+  },
+  "rootDirectory": "temp-payload"
 } 
