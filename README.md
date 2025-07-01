@@ -207,7 +207,7 @@ POST /api/seed
 
 ## 🚀 Deployment
 
-### Vercel Deployment
+### Render Deployment
 
 1. **Prepare for Deployment**
 ```bash
@@ -296,75 +296,3 @@ The application can be deployed to any Node.js hosting platform:
 # Enable debug logging
 DEBUG=payload:* npm run dev
 ```
-
-## 📝 License
-
-This project is created for the WeFrameTech Backend Hiring Task.
-
-## 🤝 Contributing
-
-This is a demonstration project for the WeFrameTech hiring process. For questions or issues, please contact the development team.
-
----
-
-**Built with ❤️ for WeFrameTech Backend Hiring Task**
-
-# WeframeTech Backend Hiring Task – Advanced Payload CMS Challenge
-
-## Loom Video Script & Checklist
-
-### 1. Introduction (with your face visible)
-Hi, my name is [Your Name]. I'm a backend developer, and this is my submission for the WeframeTech advanced Payload CMS workflow challenge. I'll walk you through my approach, the architecture, a live demo, and some of the technical challenges I faced.
-
-### 2. Architecture Explanation (show your code structure)
-- `src/collections`: Main collections (`Blogs`, `Contracts`, `Users`, `Workflows`, `WorkflowLogs`, `Media`).
-- `src/plugins/workflow-plugin.ts`: Core workflow logic, dynamic and reusable for any collection.
-- `src/admin/components/WorkflowStatus.tsx`: Custom admin UI for workflow status and actions.
-- `src/index.ts`: Main server and custom API endpoints.
-- `src/payload.config.ts`: Registers collections and plugins.
-
-### 3. Live Demo (create a workflow, assign it, test approval process)
-- Log in as admin and create a workflow with multiple steps (assign to users/roles, set conditions, step types).
-- Attach workflow to a document (e.g., Contract).
-- Update the document to trigger workflow progression; only assigned users can act at each step.
-- View workflow status and logs in the custom admin UI tab.
-- Demonstrate inline actions (approve/reject/comment) and show immutable audit trail.
-
-### 4. Technical Challenges and Solutions
-- Making the workflow engine dynamic for any collection using Payload's plugin system and dynamic slugs.
-- Customizing the admin UI with Payload's `admin.components` override system.
-- Ensuring audit trail immutability with Payload hooks.
-
-### 5. Bonus Features (if any)
-- Conditional branching between steps based on outcomes.
-- SLA timers for steps and auto-escalation if overdue.
-- Email notifications simulated with console logs.
-
-### 6. Deployment Demonstration
-- Project is deployed on [Render/Vercel].
-- Live admin panel and custom API endpoints are demonstrated.
-- Deployment process is documented below.
-
-### 7. Credentials and Sample Data
-- Demo credentials for admin and reviewer roles are included below.
-- Database is seeded with sample Blog and Contract documents.
-
-### 8. Closing
-Thank you for reviewing my submission. I enjoyed working on this challenge and learned a lot about Payload CMS. Please let me know if you have any questions!
-
----
-
-## Video Checklist
-- [ ] Face visible throughout the video
-- [ ] Clear introduction
-- [ ] Show and explain project structure
-- [ ] Live demo: create workflow, assign, attach, progress, show logs
-- [ ] Explain technical challenges and solutions
-- [ ] Show any bonus features (branching, SLA, notifications)
-- [ ] Show deployment and live demo
-- [ ] Mention credentials and sample data
-- [ ] Thank the reviewers and offer to answer questions
-
----
-
-*Replace [Your Name] and deployment platform as appropriate. Use this as your guide for recording the Loom video as required by the task.* 
